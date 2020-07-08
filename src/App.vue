@@ -1,25 +1,40 @@
 <template>
   <div id="app">
-    <Input
-      helperText="Hello"
-      type="password"
-      placeholder="Placeholder"
-      startIcon="3d_rotation"
-      size="sm"
-    />
+    <h5 class="component-title">Input default</h5>
+    <Input />
+    <Input label="Label" />
+    <Input label="Password" type="password" startIcon="https" />
+    <Input label="Label" placeholder="Placeholder" value="Value text" />
+    <Input label="Label" placeholder="Placeholder" helperText="Some text" />
+
+    <h5 class="component-title">Input error</h5>
+    <Input error />
+    <Input error label="Label" />
+    <Input error label="Label" placeholder="Placeholder" />
+    <Input error label="Label" placeholder="Placeholder" helperText="Some text" />
+
+    <h5 class="component-title">Input icon</h5>
+    <Input startIcon="3d_rotation" />
+    <Input label="Label" placeholder="Placeholder" startIcon="3d_rotation" />
+    <Input label="Label" placeholder="Placeholder" endIcon="3d_rotation" />
+
+    <h5 class="component-title">Input disabled</h5>
+    <Input startIcon="3d_rotation" disabled />
+    <Input error label="Label" disabled />
+
+    <h5 class="component-title">Input sizes</h5>
+    <Input label="Password" type="password" helperText="Some text" startIcon="https" size="sm" />
+    <Input label="Text" type="text" helperText="Some text" size="md" />
+
+    <h5 class="component-title">Input multiline</h5>
     <Input
       multiline
       row="4"
       helperText="Hello"
-      type="password"
       placeholder="Placeholder"
       startIcon="3d_rotation"
       size="sm"
     />
-    <Input error label="Hello" endIcon="3d_rotation" placeholder="Placeholder" value="123" />
-    <Input disabled />
-
-    {{val}}
   </div>
 </template>
 
