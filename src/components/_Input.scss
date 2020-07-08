@@ -1,0 +1,132 @@
+.input {
+  $root: &;
+
+  $sizes: (
+    md: 18px 12px,
+    sm: 10px 12px,
+  );
+
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    order: 1;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1.4;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #333333;
+  }
+
+  &__wrap {
+    @extend #{&}--md;
+
+    order: 2;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #828282;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: text;
+
+    &:hover {
+      border-color: #333333;
+    }
+
+    @each $item, $item-value in $sizes {
+      &--#{$item} {
+        padding: $item-value;
+      }
+    }
+
+    .material-icons {
+      flex-shrink: 0;
+      margin-top: 8px;
+      font-size: 1.2em;
+      line-height: 0;
+      color: #828282;
+      pointer-events: none;
+      user-select: none;
+
+      &--start {
+        margin-right: 15px;
+      }
+
+      &--end {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  &__field {
+    flex-grow: 1;
+    padding: 0;
+    display: block;
+    font-weight: 500;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #333333;
+    background-color: transparent;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+
+    &::placeholder {
+      color: #828282;
+    }
+  }
+
+  &__helper-text {
+    order: 3;
+    font-size: 10px;
+    line-height: 1.4;
+    color: #828282;
+  }
+
+  &:not(&--error):focus-within {
+    #{$root}__label {
+      color: #2962ff;
+    }
+
+    #{$root}__wrap {
+      border-color: #2962ff;
+      box-shadow: inset 0 0 0 1px #2962ff;
+    }
+  }
+
+  &--error:focus-within {
+    #{$root}__wrap {
+      box-shadow: inset 0 0 0 1px #d32f2f;
+    }
+  }
+
+  &--error {
+    #{$root}__label,
+    #{$root}__helper-text {
+      color: #d32f2f;
+    }
+
+    #{$root}__wrap {
+      border-color: #d32f2f;
+    }
+  }
+
+  &--disabled {
+    #{$root}__wrap {
+      background-color: #f2f2f2;
+      border-color: #e0e0e0;
+    }
+    #{$root}__label {
+      color: #333333;
+    }
+    #{$root}__helper-text {
+      color: #828282;
+    }
+  }
+}
